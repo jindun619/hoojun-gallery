@@ -1,3 +1,5 @@
+import { FolderItem } from "@/components/FolderItem";
+
 export default function IndexPage() {
   return (
     <>
@@ -16,33 +18,18 @@ export default function IndexPage() {
         </div>
         <div className="py-10">
           <div className="mx-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8">
-            <div className="border text-center hover:animate-pulse">
-              <h2 className="text-3xl">Folder Name</h2>
-              <div className="w-full h-[250px] p-1 border-2 bg-slate-100">
-                <img
-                  className="w-full h-full object-contain"
-                  src="http://via.placeholder.com/640x480"
-                />
-              </div>
-            </div>
-            <div className="border text-center hover:animate-pulse">
-              <h2 className="text-3xl">Folder Name</h2>
-              <div className="w-full h-[250px] p-1 border-2 bg-slate-100">
-                <img
-                  className="w-full h-full object-contain"
-                  src="http://via.placeholder.com/640x780"
-                />
-              </div>
-            </div>
-            <div className="border text-center hover:animate-pulse">
-              <h2 className="text-3xl">Folder Name</h2>
-              <div className="w-full h-[250px] p-1 border-2 bg-slate-100">
-                <img
-                  className="w-full h-full object-contain"
-                  src="http://via.placeholder.com/850x380"
-                />
-              </div>
-            </div>
+            <FolderItem
+              name="folderName1"
+              src="http://via.placeholder.com/640x480"
+            />
+            <FolderItem
+              name="folderName2"
+              src="http://via.placeholder.com/640x780"
+            />
+            <FolderItem
+              name="folderName3"
+              src="http://via.placeholder.com/640x380"
+            />
           </div>
         </div>
       </div>

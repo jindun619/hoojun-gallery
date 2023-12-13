@@ -5,7 +5,7 @@ export default function Layout({ children }: React.PropsWithChildren) {
   return (
     <>
       <Navbar />
-      <div>{children}</div>
+      <div className="container mx-auto border-x-2">{children}</div>
     </>
   );
 }
