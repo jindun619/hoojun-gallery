@@ -1,11 +1,13 @@
 import React from "react";
-import { Navbar } from "./Navbar";
+import Footer from "./Footer";
+// import { Navbar } from "./Navbar";
 
 export default function Layout({ children }: React.PropsWithChildren) {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="bg-green-100">{children}</div>
+      <Footer />
     </>
   );
 }
