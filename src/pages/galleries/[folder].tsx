@@ -6,8 +6,8 @@ export default function GalleryPage() {
   const { query } = router;
   const { folder } = query;
   return (
-    <>
-      <div className="mt-32 w-10/12 sm:w-[640px] mx-auto py-10 text-center border-b">
+    <div className="container mx-auto border-x-2">
+      <div className="mt-32 w-10/12 sm:w-[640px] mx-auto py-10 text-center border-b-2 border-green-200">
         <h2 className="text-3xl">{folder}</h2>
       </div>
       <div className="w-full mx-auto max-w-screen-md">
@@ -22,6 +22,6 @@ export default function GalleryPage() {
           desc="desc2"
         />
       </div>
-    </>
+    </div>
   );
 }

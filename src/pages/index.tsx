@@ -10,7 +10,7 @@ export default function IndexPage() {
         />
       </div>
       <div>
-        <div className="w-10/12 sm:w-[640px] mx-auto py-10 text-center border-b">
+        <div className="w-10/12 sm:w-[640px] mx-auto py-10 text-center border-b-2 border-green-200">
           <h1 className="text-3xl">Welcome to ...</h1>
           <h2 className="mt-2 text-xl">
             Lorem Ipsum Lorem Ipsum Lorem Ipsum...
