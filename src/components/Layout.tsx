@@ -6,7 +6,7 @@ export default function Layout({ children }: React.PropsWithChildren) {
   return (
     <>
       {/* <Navbar /> */}
-      <div className="bg-green-100">{children}</div>
+      <div className="bg-green-100 min-h-screen">{children}</div>
       <Footer />
     </>
   );
