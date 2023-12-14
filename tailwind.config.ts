@@ -7,6 +7,6 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {},
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"), require("tailwindcss-animated")],
 };
 export default config;

@@ -8,6 +8,7 @@ export default function IndexPage() {
       behavior: "smooth",
     });
   };
+
   return (
     <>
       <div className="hero min-h-screen bg-green-200">
