@@ -1,6 +1,16 @@
+import { supabase } from "@/lib/supabase/client";
+
 import { FolderItem } from "@/components/FolderItem";
 
-export default function IndexPage() {
+interface Folder {
+  id: number;
+  name: string;
+  desc: string;
+  imgSrc: string;
+}
+
+export default function IndexPage({ folders }: { folders: Folder[] }) {
+  console.log(folders);
   const scrollToBottom = () => {
     const foldersSection = document.getElementById("folders-section");
     window.scrollTo({
@@ -41,21 +51,41 @@ export default function IndexPage() {
         </div>
         <div className="py-10">
           <div className="mx-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8">
-            <FolderItem
-              name="folderName1"
-              src="https://img.freepik.com/free-photo/forest-landscape_71767-127.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1702512000&semt=ais"
-            />
-            <FolderItem
-              name="folderName2"
-              src="https://d19h8kn98xvxar.cloudfront.net/images/_hero/connectwithnature.jpg"
-            />
-            <FolderItem
-              name="folderName3"
-              src="https://img.freepik.com/free-photo/forest-landscape_71767-127.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1702512000&semt=ais"
-            />
+            {folders.map((v, i) => (
+              <FolderItem key={i} id={v.id} name={v.name} src={v.imgSrc} />
+            ))}
           </div>
         </div>
       </div>
     </>
   );
 }
+
+export const getStaticProps = async () => {
+  const folders: Folder[] = [];
+  const { data, error } = await supabase.from("folders").select();
+
+  if (data) {
+    await Promise.all(
+      data.map(async (v, i) => {
+        const { data: images, error } = await supabase.storage
+          .from("images")
+          .list(v.id);
+        if (images?.[0]) {
+          folders.push({
+            id: v.id,
+            name: v.name,
+            desc: v.desc,
+            imgSrc: `https://aultcbwwbvogqsnhhfgo.supabase.co/storage/v1/object/public/images/${v.id}/${images[0].name}`,
+          });
+        }
+      })
+    );
+  }
+
+  return {
+    props: {
+      folders,
+    },
+  };
+};

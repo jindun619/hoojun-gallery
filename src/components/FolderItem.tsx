@@ -2,11 +2,12 @@ import { useState } from "react";
 import Link from "next/link";
 
 interface FolderItemProps {
+  id: number;
   name: string;
   src: string;
 }
 
-export function FolderItem({ name, src }: FolderItemProps) {
+export function FolderItem({ id, name, src }: FolderItemProps) {
   const [isHovered, setIsHovered] = useState<boolean>();
 
   const handleMouseEnter = () => {
@@ -17,7 +18,7 @@ export function FolderItem({ name, src }: FolderItemProps) {
   };
 
   return (
-    <Link href={`/galleries/${name}`}>
+    <Link href={`/galleries/${id}`}>
       <div
         className="text-center hover:animate-pulse"
         onMouseEnter={handleMouseEnter}
