@@ -63,7 +63,7 @@ export default function GalleryPage({
     if (images.length === 0) {
       router.push("/");
     }
-  }, []);
+  }, [images.length, router]);
 
   return (
     <>
