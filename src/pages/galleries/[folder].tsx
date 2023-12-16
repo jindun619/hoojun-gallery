@@ -1,13 +1,26 @@
 import { useState, useEffect } from "react";
+import { supabase } from "@/lib/supabase/client";
 import { useRouter } from "next/router";
-
-import { Item } from "@/components/Item";
 import Link from "next/link";
 
-export default function GalleryPage() {
+import { Item } from "@/components/Item";
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
+import { ParsedUrlQuery } from "querystring";
+
+interface Image {
+  id: number;
+  folderId: number;
+  title?: string;
+  desc?: string;
+}
+export default function GalleryPage({
+  images,
+  folderName,
+}: {
+  images: Image[];
+  folderName: string;
+}) {
   const router = useRouter();
-  const { query } = router;
-  const { folder } = query;
 
   const [scrollProgress, setScrollProgress] = useState(0);
   const [scrollBtnVisible, setScrollBtnVisible] = useState<boolean>(true);
@@ -45,6 +58,12 @@ export default function GalleryPage() {
       prevScrollpos = currentScrollPos;
     };
   }, []);
+  //in SSG, should you router.push() inside useEffect
+  useEffect(() => {
+    if (images.length === 0) {
+      router.push("/");
+    }
+  }, []);
 
   return (
     <>
@@ -54,9 +73,17 @@ export default function GalleryPage() {
         max="100"></progress>
       <div className="container mx-auto">
         <div className="w-10/12 sm:w-[640px] mx-auto py-10 text-center">
-          <h2 className="text-4xl font-semibold">{folder}</h2>
+          <h2 className="text-4xl font-semibold">{folderName}</h2>
         </div>
         <div className="w-full mx-auto max-w-screen-md">
+          {images.map((v, i) => (
+            <Item
+              key={i}
+              src={`https://aultcbwwbvogqsnhhfgo.supabase.co/storage/v1/object/public/images/${v.folderId}/${v.id}`}
+              title={v.title || ""}
+              desc={v.desc || ""}
+            />
+          ))}
           <Item
             src="https://img.freepik.com/free-photo/forest-landscape_71767-127.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1702512000&semt=ais"
             title="title1"
@@ -101,3 +128,52 @@ export default function GalleryPage() {
     </>
   );
 }
+
+interface IParams extends ParsedUrlQuery {
+  folder: string;
+}
+export const getStaticProps: GetStaticProps = async ({
+  params,
+}: GetStaticPropsContext) => {
+  const { folder: folderId } = params as IParams;
+
+  const { data: images } = await supabase
+    .from("images")
+    .select()
+    .eq("folderId", +folderId);
+  const { data: folder } = await supabase
+    .from("folders")
+    .select()
+    .eq("id", +folderId);
+  const folderName = folder?.[0].name;
+
+  return {
+    props: {
+      images,
+      folderName,
+    },
+  };
+};
+
+interface Folder {
+  params: {
+    folder: string;
+  };
+}
+export const getStaticPaths: GetStaticPaths = async () => {
+  const { data } = await supabase.from("folders").select();
+  if (data) {
+    const folders: Folder[] = data.map((folder) => ({
+      params: { folder: folder.id.toString() },
+    }));
+    return {
+      paths: folders,
+      fallback: false,
+    };
+  } else {
+    return {
+      paths: [],
+      fallback: false,
+    };
+  }
+};
