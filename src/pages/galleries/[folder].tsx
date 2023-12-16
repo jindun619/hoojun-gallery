@@ -84,16 +84,6 @@ export default function GalleryPage({
               desc={v.desc || ""}
             />
           ))}
-          <Item
-            src="https://img.freepik.com/free-photo/forest-landscape_71767-127.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1702512000&semt=ais"
-            title="title1"
-            desc="desc1"
-          />
-          <Item
-            src="https://d19h8kn98xvxar.cloudfront.net/images/_hero/connectwithnature.jpg"
-            title="title2"
-            desc="desc2"
-          />
         </div>
         <div className="fixed bottom-1/2 right-7 flex flex-col gap-4">
           <button
@@ -152,6 +142,7 @@ export const getStaticProps: GetStaticProps = async ({
       images,
       folderName,
     },
+    revalidate: 10,
   };
 };
 

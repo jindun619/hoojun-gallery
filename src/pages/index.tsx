@@ -63,12 +63,12 @@ export default function IndexPage({ folders }: { folders: Folder[] }) {
 
 export const getStaticProps = async () => {
   const folders: Folder[] = [];
-  const { data, error } = await supabase.from("folders").select();
+  const { data } = await supabase.from("folders").select();
 
   if (data) {
     await Promise.all(
       data.map(async (v, i) => {
-        const { data: images, error } = await supabase.storage
+        const { data: images } = await supabase.storage
           .from("images")
           .list(v.id);
         if (images?.[0]) {
