@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface FolderItemProps {
   id: number;
@@ -29,8 +30,8 @@ export function FolderItem({ id, name, src }: FolderItemProps) {
           }`}>
           {name}
         </h2>
-        <div className="w-full h-[250px] p-1 bg-emerald-100">
-          <img className="w-full h-full object-contain" src={src} />
+        <div className="relative w-full h-[250px] p-1 bg-emerald-100">
+          <Image src={src} alt={src} fill={true} className="object-contain" />
         </div>
       </div>
     </Link>
