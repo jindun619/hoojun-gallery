@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Item } from "@/components/Item";
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import { ParsedUrlQuery } from "querystring";
+import { Meta } from "@/components/Meta";
 
 interface Image {
   id: number;
@@ -13,13 +14,12 @@ interface Image {
   title?: string;
   desc?: string;
 }
-export default function GalleryPage({
-  images,
-  folderName,
-}: {
+interface GalleryProps {
   images: Image[];
   folderName: string;
-}) {
+}
+
+export default function GalleryPage({ images, folderName }: GalleryProps) {
   const router = useRouter();
 
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -67,6 +67,7 @@ export default function GalleryPage({
 
   return (
     <>
+      <Meta title={folderName} og_title={folderName} />
       <progress
         className="progress progress-success bg-green-100 fixed top-0 w-full h-1"
         value={scrollProgress}

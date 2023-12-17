@@ -1,6 +1,7 @@
 import { supabase } from "@/lib/supabase/client";
 
 import { FolderItem } from "@/components/FolderItem";
+import { Meta } from "@/components/Meta";
 
 interface Folder {
   id: number;
@@ -21,6 +22,7 @@ export default function IndexPage({ folders }: { folders: Folder[] }) {
 
   return (
     <>
+      <Meta title="홈" />
       <div className="hero min-h-screen bg-green-200">
         <div className="hero-content flex-col lg:flex-row">
           <img
