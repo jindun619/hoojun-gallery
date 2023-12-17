@@ -89,5 +89,6 @@ export const getStaticProps = async () => {
     props: {
       folders,
     },
+    revalidate: 10,
   };
 };
