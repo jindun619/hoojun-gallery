@@ -60,10 +60,10 @@ export default function GalleryPage({ images, folderName }: GalleryProps) {
   }, []);
   //in SSG, should you router.push() inside useEffect
   useEffect(() => {
-    if (images?.length === 0) {
+    if (images.length === 0) {
       router.push("/");
     }
-  }, [images?.length, router]);
+  }, [images.length, router]);
 
   return (
     <>
@@ -160,7 +160,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     }));
     return {
       paths: folders,
-      fallback: true,
+      fallback: false,
     };
   } else {
     return {
