@@ -156,10 +156,10 @@ export default function AdminPage() {
 
   useEffect(() => {
     if (folders.length > 0) {
-      setUploadInputs({
-        ...uploadInputs,
+      setUploadInputs((prev) => ({
+        ...prev,
         folder: folders[0].id,
-      });
+      }));
     }
   }, [folders]);
 
