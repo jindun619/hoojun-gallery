@@ -17,9 +17,14 @@ interface Image {
 interface GalleryProps {
   images: Image[];
   folderName: string;
+  folderDesc: string;
 }
 
-export default function GalleryPage({ images, folderName }: GalleryProps) {
+export default function GalleryPage({
+  images,
+  folderName,
+  folderDesc,
+}: GalleryProps) {
   const router = useRouter();
 
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -75,6 +80,7 @@ export default function GalleryPage({ images, folderName }: GalleryProps) {
       <div className="container mx-auto">
         <div className="w-10/12 sm:w-[640px] mx-auto py-10 text-center">
           <h2 className="text-4xl font-semibold">{folderName}</h2>
+          <p className="mt-2 text-2xl text-slate-600">{folderDesc}</p>
         </div>
         <div className="w-full mx-auto max-w-screen-md">
           {images?.map((v, i) => (
@@ -137,11 +143,13 @@ export const getStaticProps: GetStaticProps = async ({
     .select()
     .eq("id", +folderId);
   const folderName = folder?.[0].name;
+  const folderDesc = folder?.[0]?.desc || "";
 
   return {
     props: {
       images,
       folderName,
+      folderDesc,
     },
     revalidate: 10,
   };

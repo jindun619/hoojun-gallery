@@ -1,4 +1,1 @@
-[folder]/[files]
-files { id, src, title, desc }
-
-reference: https://demo.photo.gallery/
+(김호준 갤러리)[https://gallery.hoojun.kim]
