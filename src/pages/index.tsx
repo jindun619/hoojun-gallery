@@ -30,25 +30,23 @@ export default function IndexPage({ folders }: { folders: Folder[] }) {
             className="max-w-sm rounded-lg shadow-2xl"
           />
           <div>
-            <h1 className="text-5xl font-bold">Box Office News!</h1>
-            <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+            <h1 className="text-4xl sm:text-5xl text-neutral-600 font-bold"><span className="text-green-500">김호준 갤러리</span>에 오신 것을 환영합니다!</h1>
+            <p className="py-6 text-neutral-600 font-semibold">
+              김호준의 ㄹㅇ TMI를 보고 싶으시다면 시작하기를 눌러주세요!
             </p>
             <button
-              className="btn bg-[#3a8e75] text-[#e6e6e6] hover:bg-[#216652]"
+              className="btn border-none bg-[#3a8e75] text-[#e6e6e6] hover:bg-[#216652]"
               onClick={scrollToBottom}>
-              Get Started
+              시작하기
             </button>
           </div>
         </div>
       </div>
       <div id="folders-section">
         <div className="w-10/12 sm:w-[640px] mx-auto py-10 text-center border-b-2 border-green-200">
-          <h1 className="text-3xl">Welcome to ...</h1>
+          <h1 className="text-3xl text-neutral-600 font-semibold">폴더 선택</h1>
           <h2 className="mt-2 text-xl">
-            Lorem Ipsum Lorem Ipsum Lorem Ipsum...
+            {/*Lorem Ipsum Lorem Ipsum Lorem Ipsum...*/}
           </h2>
         </div>
         <div className="py-10">

@@ -79,8 +79,8 @@ export default function GalleryPage({
         max="100"></progress>
       <div className="container mx-auto">
         <div className="w-10/12 sm:w-[640px] mx-auto py-10 text-center">
-          <h2 className="text-4xl font-semibold">{folderName}</h2>
-          <p className="mt-2 text-2xl text-slate-600">{folderDesc}</p>
+          <h2 className="text-4xl text-neutral-600 font-semibold">{folderName}</h2>
+          <p className="mt-2 text-2xl text-slate-600 font-semibold">{folderDesc}</p>
         </div>
         <div className="w-full mx-auto max-w-screen-md">
           {images?.map((v, i) => (

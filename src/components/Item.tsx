@@ -14,8 +14,8 @@ export function Item({ src, title, desc }: ItemProps) {
           <Image src={src} alt={src} fill={true} className="object-contain" />
         </div>
       </div>
-      <h3 className="mt-3 text-3xl font-semibold">{title}</h3>
-      <p className="mt-2 text-xl text-slate-600">{desc}</p>
+      <h3 className="mt-3 text-3xl text-neutral-600 font-semibold">{title}</h3>
+      <p className="mt-2 text-xl text-slate-600 font-semibold">{desc}</p>
     </div>
   );
 }

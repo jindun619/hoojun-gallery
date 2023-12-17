@@ -25,7 +25,7 @@ export function FolderItem({ id, name, src }: FolderItemProps) {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}>
         <h2
-          className={`text-3xl font-semibold ${
+          className={`text-3xl text-neutral-600 font-semibold ${
             isHovered ? "text-green-400" : ""
           }`}>
           {name}
