@@ -38,6 +38,7 @@ export default function AdminPage() {
     title: "",
     desc: "",
   });
+  const [uploadLoading, setUploadLoading] = useState<boolean>(false);
 
   //LOGIN HANDLERS
   const handleLoginInputs = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -101,6 +102,7 @@ export default function AdminPage() {
   };
   const handleUploadSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    setUploadLoading(true);
     const imageId: number = Date.now();
     //UPLOAD TO DATABASE
     {
@@ -123,12 +125,13 @@ export default function AdminPage() {
         console.log(error);
       }
     }
-    setUploadInputs({
-      folder: folders[0].id,
+    setUploadLoading(false);
+    setUploadInputs((prev) => ({
+      ...prev,
       file: undefined,
       title: "",
       desc: "",
-    });
+    }));
   };
 
   useEffect(() => {
@@ -259,10 +262,15 @@ export default function AdminPage() {
               className="btn btn-neutral mt-3"
               onClick={handleUploadSubmit}
               disabled={
+                uploadLoading ||
                 typeof uploadInputs.file === "undefined" ||
                 typeof uploadInputs.folder === "undefined"
               }>
-              제출
+              {uploadLoading ? (
+                <span className="loading loading-dots loading-md"></span>
+              ) : (
+                "제출"
+              )}
             </button>
           </form>
         </div>
