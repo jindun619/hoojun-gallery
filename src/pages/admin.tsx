@@ -81,14 +81,10 @@ export default function AdminPage() {
   };
   //UPLOAD HANDLERS
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    if (typeof e.target.value === "number") {
-      setUploadInputs({
-        ...uploadInputs,
-        folder: e.target.value,
-      });
-    } else {
-      console.log("e.target.value not a number");
-    }
+    setUploadInputs({
+      ...uploadInputs,
+      folder: +e.target.value,
+    });
   };
   const handleFileSelected = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
