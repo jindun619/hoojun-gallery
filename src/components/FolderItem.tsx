@@ -30,10 +30,11 @@ export function FolderItem({ id, name, src }: FolderItemProps) {
           }`}>
           {name}
         </h2>
-        <div className="relative w-full h-[250px] p-1 bg-emerald-100">
+        <div className="mt-1 relative w-full h-[250px] p-1 bg-emerald-100">
           <Image src={src} alt={src} fill={true} className="object-contain" />
         </div>
       </div>
     </Link>
   );
 }
+

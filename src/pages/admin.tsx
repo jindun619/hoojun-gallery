@@ -161,7 +161,7 @@ export default function AdminPage() {
         folder: folders[0].id,
       });
     }
-  }, [folders, uploadInputs]);
+  }, [folders]);
 
   if (!session) {
     return (

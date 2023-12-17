@@ -24,7 +24,7 @@ export default function IndexPage({ folders }: { folders: Folder[] }) {
       <div className="hero min-h-screen bg-green-200">
         <div className="hero-content flex-col lg:flex-row">
           <img
-            src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
+            src="https://aultcbwwbvogqsnhhfgo.supabase.co/storage/v1/object/public/images/heroimg"
             className="max-w-sm rounded-lg shadow-2xl"
           />
           <div>
@@ -67,7 +67,7 @@ export const getStaticProps = async () => {
 
   if (data) {
     await Promise.all(
-      data.map(async (v, i) => {
+      data.map(async (v) => {
         const { data: images } = await supabase.storage
           .from("images")
           .list(v.id);
