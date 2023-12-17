@@ -27,7 +27,7 @@ export default function IndexPage({ folders }: { folders: Folder[] }) {
         <div className="hero-content flex-col lg:flex-row">
           <img
             src="https://aultcbwwbvogqsnhhfgo.supabase.co/storage/v1/object/public/images/heroimg"
-            className="max-w-sm rounded-lg shadow-2xl"
+            className="max-w-xs rounded-lg shadow-2xl"
           />
           <div>
             <h1 className="text-4xl sm:text-5xl text-neutral-600 font-bold"><span className="text-green-500">김호준 갤러리</span>에 오신 것을 환영합니다!</h1>
