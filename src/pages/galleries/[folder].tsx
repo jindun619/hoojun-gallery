@@ -160,7 +160,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     }));
     return {
       paths: folders,
-      fallback: false,
+      fallback: true,
     };
   } else {
     return {
