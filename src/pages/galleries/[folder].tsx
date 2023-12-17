@@ -60,10 +60,10 @@ export default function GalleryPage({ images, folderName }: GalleryProps) {
   }, []);
   //in SSG, should you router.push() inside useEffect
   useEffect(() => {
-    if (images.length === 0) {
+    if (images?.length === 0) {
       router.push("/");
     }
-  }, [images.length, router]);
+  }, [images?.length, router]);
 
   return (
     <>
@@ -77,7 +77,7 @@ export default function GalleryPage({ images, folderName }: GalleryProps) {
           <h2 className="text-4xl font-semibold">{folderName}</h2>
         </div>
         <div className="w-full mx-auto max-w-screen-md">
-          {images.map((v, i) => (
+          {images?.map((v, i) => (
             <Item
               key={i}
               src={`https://aultcbwwbvogqsnhhfgo.supabase.co/storage/v1/object/public/images/${v.folderId}/${v.id}`}
@@ -160,7 +160,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     }));
     return {
       paths: folders,
-      fallback: false,
+      fallback: true,
     };
   } else {
     return {
