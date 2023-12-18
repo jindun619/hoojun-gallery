@@ -11,7 +11,6 @@ interface Folder {
 }
 
 export default function IndexPage({ folders }: { folders: Folder[] }) {
-  console.log(folders);
   const scrollToBottom = () => {
     const foldersSection = document.getElementById("folders-section");
     window.scrollTo({
