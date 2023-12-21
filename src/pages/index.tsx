@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { supabase } from "@/lib/supabase/client";
 
 import { FolderItem } from "@/components/FolderItem";
@@ -24,10 +25,13 @@ export default function IndexPage({ folders }: { folders: Folder[] }) {
       <Meta title="홈" />
       <div className="hero min-h-screen bg-green-200">
         <div className="hero-content flex-col lg:flex-row">
-          <img
+          <div className="relative w-64 h-64 max-w-xs">
+            <Image className="rounded-lg shadow-2xl" src="https://aultcbwwbvogqsnhhfgo.supabase.co/storage/v1/object/public/images/heroimg" alt="heorimg" fill={true} />
+          </div>
+          {/* <img
             src="https://aultcbwwbvogqsnhhfgo.supabase.co/storage/v1/object/public/images/heroimg"
             className="max-w-xs rounded-lg shadow-2xl"
-          />
+          /> */}
           <div>
             <h1 className="text-4xl sm:text-5xl text-neutral-600 font-bold"><span className="text-green-500">김호준 갤러리</span>에 오신 것을 환영합니다!</h1>
             <p className="py-6 text-neutral-600 font-semibold">
