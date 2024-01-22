@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="footer items-center p-4 bg-neutral text-neutral-content">
       <p className="inline">
-        Copyright © 2023{" "}
+        Copyright © 2024{" "}
         <Link
           href="https://github.com/jindun619"
           className="text-blue-400 hover:text-blue-500">
