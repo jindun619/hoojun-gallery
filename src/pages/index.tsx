@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import Image from "next/image";
 import { supabase } from "@/lib/supabase/client";
 
@@ -12,6 +14,10 @@ interface Folder {
 }
 
 export default function IndexPage({ folders }: { folders: Folder[] }) {
+  useEffect(() => {
+    console.log("Welcome to Hoojun Gallery!");
+  }, [])
+
   const scrollToBottom = () => {
     const foldersSection = document.getElementById("folders-section");
     window.scrollTo({
