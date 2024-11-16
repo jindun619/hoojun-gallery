@@ -53,9 +53,7 @@ export default function AdminPage() {
       email: loginInputs.email,
       password: loginInputs.password,
     });
-    if (error) {
-      console.log(error);
-    } else {
+    if (!error) {
       setSession(data.session);
     }
   };
@@ -162,6 +160,10 @@ export default function AdminPage() {
     }
   }, [folders]);
 
+  useEffect(() => {
+    console.log(session);
+  }, [session]);
+
   if (!session) {
     return (
       <div className="h-screen flex justify-center items-center">
@@ -216,7 +218,8 @@ export default function AdminPage() {
               <button
                 className="btn btn-neutral mt-3"
                 onClick={handleFolderSubmit}
-                disabled={!folderInputs.name}>
+                disabled={!folderInputs.name}
+              >
                 제출
               </button>
             </div>
@@ -227,7 +230,8 @@ export default function AdminPage() {
             <select
               className="select select-bordered w-full max-w-xs"
               value={uploadInputs.folder}
-              onChange={handleSelectChange}>
+              onChange={handleSelectChange}
+            >
               {folders.map((v, i) => (
                 <option key={i} value={v.id}>
                   {v.name}
@@ -265,7 +269,8 @@ export default function AdminPage() {
                 uploadLoading ||
                 typeof uploadInputs.file === "undefined" ||
                 typeof uploadInputs.folder === "undefined"
-              }>
+              }
+            >
               {uploadLoading ? (
                 <span className="loading loading-dots loading-md"></span>
               ) : (

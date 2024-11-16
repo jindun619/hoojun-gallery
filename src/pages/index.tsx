@@ -16,7 +16,7 @@ interface Folder {
 export default function IndexPage({ folders }: { folders: Folder[] }) {
   useEffect(() => {
     console.log("Welcome to Hoojun Gallery!");
-  }, [])
+  }, []);
 
   const scrollToBottom = () => {
     const foldersSection = document.getElementById("folders-section");
@@ -32,20 +32,29 @@ export default function IndexPage({ folders }: { folders: Folder[] }) {
       <div className="hero min-h-screen bg-green-200">
         <div className="hero-content flex-col lg:flex-row">
           <div className="relative w-64 h-64 max-w-xs">
-            <Image className="rounded-lg shadow-2xl" src="https://aultcbwwbvogqsnhhfgo.supabase.co/storage/v1/object/public/images/heroimg" alt="heorimg" fill={true} />
+            <Image
+              className="rounded-lg shadow-2xl"
+              src="https://aultcbwwbvogqsnhhfgo.supabase.co/storage/v1/object/public/images/heroimg"
+              alt="heorimg"
+              fill={true}
+            />
           </div>
           {/* <img
             src="https://aultcbwwbvogqsnhhfgo.supabase.co/storage/v1/object/public/images/heroimg"
             className="max-w-xs rounded-lg shadow-2xl"
           /> */}
           <div>
-            <h1 className="text-4xl sm:text-5xl text-neutral-600 font-bold"><span className="text-green-500">김호준 갤러리</span>에 오신 것을 환영합니다!</h1>
+            <h1 className="text-4xl sm:text-5xl text-neutral-600 font-bold">
+              <span className="text-green-500">김호준 갤러리</span>에 오신 것을
+              환영합니다!
+            </h1>
             <p className="py-6 text-neutral-600 font-semibold">
               김호준의 ㄹㅇ TMI를 보고 싶으시다면 시작하기를 눌러주세요!
             </p>
             <button
               className="btn border-none bg-[#3a8e75] text-[#e6e6e6] hover:bg-[#216652]"
-              onClick={scrollToBottom}>
+              onClick={scrollToBottom}
+            >
               시작하기
             </button>
           </div>
